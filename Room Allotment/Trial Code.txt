@@ -1,0 +1,23 @@
+Dim a, text As String
+Open App.Path & "\teacher.txt" For Append As #1
+Print #1, text1.text
+Close #1
+MsgBox "Submitted", vbInformation
+
+Dim a1, text1 As String
+Open App.Path & "\teacher.txt" For Input As #1
+While EOF(1) = False
+    Line Input #1, a1
+    Adodc1.RecordSource = "select * from invigilator where on2 ='" + Combo1.text + "'or on1='" + Combo1.text + "'or on3='" + Combo1.text + "' and iname <>'" + a1 + "'"
+    Set DataGrid2.DataSource = Adodc1
+    Adodc1.Refresh
+Wend
+Close #1
+
+Adodc1.RecordSource = "select * from invigilator where on2 ='" + Combo1.text + "'or on1='" + Combo1.text + "'or on3='" + Combo1.text + "' and iname <>'" + text1.text + "'"
+Set DataGrid2.DataSource = Adodc1
+Adodc1.Refresh
+
+Adodc3.RecordSource = "select * from teachers where off1 <>'" + Combo1.text + "' and tname <>'" + text1.text + "'"
+Set DataGrid3.DataSource = Adodc3
+Adodc3.Refresh
